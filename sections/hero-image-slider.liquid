@@ -1,0 +1,57 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+>
+
+<link rel="stylesheet" href="{{ 'hero-image-slider.css' | asset_url }}">
+
+<script src="{{ 'hero-image-slider.js' | asset_url }}" defer="defer"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer="defer"></script>
+
+<!-- Slider main container -->
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    {% for block in section.blocks %}
+        {{ block.settings.hero_image_picker | image_url }}
+    {% endfor %}
+    <img class="swiper-slide" src="{{ 'img_name.jpg' | asset_url }}">
+
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  {% comment %}
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  {% endcomment %}
+
+  <!-- If we need scrollbar -->
+  {% comment %} <div class="swiper-scrollbar"></div> {% endcomment %}
+</div>
+
+{% schema %}
+{
+  "name": "Hero Image Slider",
+  "tag": "section",
+  "block":[
+    "type":"hero_image_picker",
+    "name":"Hero Image Picker",
+    "settings": [
+        {
+          "type": "image_picker",
+          "id": "hero_image_picker",
+          "label": "Image Picker"
+        }
+      ]
+  ],
+  "presets": [
+    {
+      "name": "Hero Image Slider"
+    }
+  ]
+}
+{% endschema %}
