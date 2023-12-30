@@ -15,9 +15,9 @@
   <div class="swiper-wrapper">
     <!-- Slides -->
     {% for block in section.blocks %}
-        {{ block.settings.hero_image_picker | image_url }}
+        <img class="swiper-slide" src="{{ block.settings.hero_image_picker | image_url }}">
     {% endfor %}
-    <img class="swiper-slide" src="{{ 'img_name.jpg' | asset_url }}">
+
 
   </div>
   <!-- If we need pagination -->
